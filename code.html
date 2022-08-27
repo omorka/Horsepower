@@ -57,20 +57,105 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function helloWorld()
+                            //get the values from startValue and endValue
+                            function getValues()
                             {
-                                alert("Hello World!");
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+
+                                //parse into Integers
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+
+                                if (Number.isInteger(startValue) && Number.isInteger(endValue)) 
+                                {  
+                                    //generate numbers
+                                    let numbers = generateNumbers(startValue, endValue);
+                                    //display numbers
+                                    displayNumbers(numbers);
+                                }
+                                else
+                                {
+                                    //send error message
+                                    alert("Please enter integers!");
+                                }
+
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World".</p>
+                    <h5>GetValues() Method</h5>
+                    <p>The <strong>getValues()</strong> method gets the input from the HTML 
+                    and stores it in javascript values that are then checked to confirm they 
+                    are integers before being passed into the next method.</p>
                 </div>
             </div>
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col-lg-8">
+                    <pre class="line-numbers">
+                        <code class="language-javascript">
+                            //generate numbers from startValue to the endValue
+                            function generateNumbers(startValue, endValue)
+                            {
+                                let numbers = [];
+
+                                for(let i = startValue; i <= endValue; i++)
+                                {
+                                    numbers.push(i);
+                                }
+
+                                return numbers;
+                            }
+                        </code>
+                    </pre>
+                </div>
+                <div class="col-lg-4">
+                    <h5>GenerateNumbers() Method</h5>
+                    <p>The <strong>generateNumbers()</strong> method takes in 2 parameters 
+                    which are the <strong>startValue</strong> and <strong>endValue</strong> 
+                    from the <strong>getValues()</strong> method and pushes the numbers from 
+                    the starting value to the ending value in an array using a FOR Loop.</p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col-lg-8">
+                    <pre class="line-numbers">
+                        <code class="language-javascript">
+                            //display the numbers and mark even numbers bold
+                            function displayNumbers(numbers)
+                            {
+                                let templateRows = "";
+
+                                for(let i = 0; i < numbers.length; i++)
+                                {
+                                    let number = numbers[i];
+
+                                    if(number % 2 == 0)
+                                    {
+                                        templateRows += `&lt;tr>&lt;td>&lt;strong>${number}&lt;/strong>
+                                        &lt;/td>&lt;/tr>`
+                                    }
+                                    else
+                                    {
+                                        templateRows += `&lt;tr>&lt;td>${number}&lt;/td>&lt;/tr>`
+                                    }
+                                }
+
+                                document.getElementById("results").innerHTML = templateRows;
+                            }
+                        </code>
+                    </pre>
+                </div>
+                <div class="col-lg-4">
+                    <h5>DisplayNumbers() Method</h5>
+                    <p>The <strong>displayNumbers()</strong> method takes in the array 
+                    from the <strong>generateNumbers</strong> method and using a FOR loop 
+                    iterates over the numbers array and adds the <strong>templatRows</strong> 
+                    string to the HTML document that will then display them in a table.</p>
+                </div>
+            </div>
+        </div>
         </div>
     </main>
     <!-- FOOTER SECTION -->
