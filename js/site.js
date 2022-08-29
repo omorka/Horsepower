@@ -9,17 +9,25 @@ function getValues()
     startValue = parseInt(startValue);
     endValue = parseInt(endValue);
 
-    if (Number.isInteger(startValue) && Number.isInteger(endValue)) 
-    {  
-        //generate numbers
-        let numbers = generateNumbers(startValue, endValue);
-        //display numbers
-        displayNumbers(numbers);
+    if (Number.isInteger(startValue) && Number.isInteger(endValue) && startValue >= 0
+    && endValue <= 100) 
+    {
+        if (startValue > endValue)
+        {
+            alert("Make sure the starting value is smaller than the ending value.");
+        }
+        else
+        {
+             //generate numbers
+            let numbers = generateNumbers(startValue, endValue);
+            //display numbers
+            displayNumbers(numbers);
+        }
     }
     else
     {
         //send error message
-        alert("Please enter integers!");
+        alert("Please enter integers from 0 to 100!");
     }
 
 }
