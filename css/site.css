@@ -33,6 +33,12 @@ nav{
     color: var(--secondary-color);
 }
 
+@media screen and (max-width: 991.33px) {
+    .border-end {
+        border: none !important;
+    }
+}
+
 code[class*="language-"], pre[class*="language-"] {
     white-space: pre-wrap;
     word-break: break-all;
